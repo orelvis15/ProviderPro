@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 });
 
 //Config the DB conection
-mongoose.connect('mongodb://127.0.0.1:27017/easyrequest').then(() => {
+mongoose.connect('mongodb://123:123@ds217898.mlab.com:17898/providerdb').then(() => {
     console.log(`Succesfully Connected`);
 }).catch(() => {
     console.log(`Error Connecting to the Mongodb Database`);
