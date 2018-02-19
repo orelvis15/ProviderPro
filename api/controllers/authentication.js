@@ -1,13 +1,8 @@
-
-
 var passport = require('passport');
 var mongoose = require('mongoose');
-
-
 var User = mongoose.model('User');
-//var Provider = mongoose.model('Provider');
-//var Client = mongoose.model('Client');
-
+var Client = require('./../models/client');
+var Provider = require('./../models/provider');;
 
 var sendJSONresponse = function (res, status, content) {
     res.status(status);
@@ -22,22 +17,16 @@ module.exports.register = function (req, res) {
     user.name = req.body.name;
     user.email = req.body.email;
     user.setPassword(req.body.password);
+    client.name = req.body.name;
+    client.email = req.body.email;
 
     user.save(function (err) {
+        client.save();
         var token;
         token = user.generateJwt();
         res.status(200);
         res.json({
             "token": token
-        });
-    });
-
-    client.name = req.body.name;
-    client.email = req.body.email;
-
-    client.save(function (err) {
-        res.json({
-            "message": "Adding Client"
         });
     });
 };
