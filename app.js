@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
-require('./api/models/user');
+//require('./api/models/user');
 require('./api/config/passport');
 
 var app = express();
